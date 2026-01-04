@@ -42,52 +42,49 @@
 
 4. 环境要求
    Node.js 16.x 或更高版本
-   npm 或 yarn 包管理器
+
+    npm 或 yarn 包管理器
+
 5. 安装依赖
 
 # 克隆项目
 
 git clone <repository-url>
+
 cd openlayers-tianditu
 
 # 安装依赖
 
 npm install
+或
+yarn install
 
-# 或
+3. 配置天地图 TK
+   创建编辑 .env 文件，设置你的天地图 TK
+   VITE_TIAN_DI_TU_TK=你的天地图实际 TK
+   获取天地图 TK
+   访问 天地图官网
+   注册账号并申请开发者密钥
+   将获取到的 TK 填入 .env 文件
 
-yarn install 3. 配置天地图 TK
-复制 .env.example 文件为 .env
-cp .env.example .env
-编辑 .env 文件，设置你的天地图 TK
-VITE_TIAN_DI_TU_TK=你的天地图实际 TK
-获取天地图 TK
-访问 天地图官网
-注册账号并申请开发者密钥
-将获取到的 TK 填入 .env 文件 4. 运行项目
+4. 运行项目
 
 # 开发环境
 
 npm run dev
-
-# 或
-
+或
 yarn dev
 
 # 生产环境构建
 
 npm run build
-
-# 或
-
+或
 yarn build
 
 # 预览生产构建
 
 npm run preview
-
-# 或
-
+或
 yarn preview
 
 # 项目结构
@@ -157,43 +154,45 @@ getCurrentMapType()
    // 天地图 TK 配置
    export const TDT_TK = import.meta.env.VITE_TIAN_DI_TU_TK
 
-// 默认地图配置
-export const DEFAULT_CONFIG = {
-center: [116.404, 39.915], // 默认中心点（北京）
-zoom: 12, // 默认缩放级别
-minZoom: 3, // 最小缩放级别
-maxZoom: 18, // 最大缩放级别
-projection: 'EPSG:3857' // 投影坐标系
-}
+    // 默认地图配置
+    export const DEFAULT_CONFIG = {
+    center: [116.404, 39.915], // 默认中心点（北京）
+    zoom: 12, // 默认缩放级别
+    minZoom: 3, // 最小缩放级别
+    maxZoom: 18, // 最大缩放级别
+    projection: 'EPSG:3857' // 投影坐标系
+    }
 
-// 地图类型配置
-export const MAP_TYPES = {
-vector: { // 矢量地图
-label: '矢量地图',
-layerType: 'vec',
-labelType: 'cva'
-},
-image: { // 影像地图
-label: '影像地图',
-layerType: 'img',
-labelType: 'cia'
-},
-terrain: { // 地形地图
-label: '地形地图',
-layerType: 'ter',
-labelType: 'cta'
-}
-} 2. 天地图瓦片 URL 模板
-使用 DataServer 接口，支持 EPSG:4326 坐标系：
-// 天地图瓦片服务 URL 模板
-export const TILE_URL_TEMPLATES = {
-vec: 'https://{s}.tianditu.gov.cn/DataServer?T=vec_w&x={x}&y={y}&l={z}&tk={tk}',
-cva: 'https://{s}.tianditu.gov.cn/DataServer?T=cva_w&x={x}&y={y}&l={z}&tk={tk}',
-img: 'https://{s}.tianditu.gov.cn/DataServer?T=img_w&x={x}&y={y}&l={z}&tk={tk}',
-cia: 'https://{s}.tianditu.gov.cn/DataServer?T=cia_w&x={x}&y={y}&l={z}&tk={tk}',
-ter: 'https://{s}.tianditu.gov.cn/DataServer?T=ter_w&x={x}&y={y}&l={z}&tk={tk}',
-cta: 'https://{s}.tianditu.gov.cn/DataServer?T=cta_w&x={x}&y={y}&l={z}&tk={tk}'
-}
+    // 地图类型配置
+    export const MAP_TYPES = {
+    vector: { // 矢量地图
+    label: '矢量地图',
+    layerType: 'vec',
+    labelType: 'cva'
+    },
+    image: { // 影像地图
+    label: '影像地图',
+    layerType: 'img',
+    labelType: 'cia'
+    },
+    terrain: { // 地形地图
+    label: '地形地图',
+    layerType: 'ter',
+    labelType: 'cta'
+    }
+    }
+
+2. 天地图瓦片 URL 模板
+   使用 DataServer 接口，支持 EPSG:4326 坐标系：
+   // 天地图瓦片服务 URL 模板
+   export const TILE_URL_TEMPLATES = {
+   vec: 'https://{s}.tianditu.gov.cn/DataServer?T=vec_w&x={x}&y={y}&l={z}&tk={tk}',
+   cva: 'https://{s}.tianditu.gov.cn/DataServer?T=cva_w&x={x}&y={y}&l={z}&tk={tk}',
+   img: 'https://{s}.tianditu.gov.cn/DataServer?T=img_w&x={x}&y={y}&l={z}&tk={tk}',
+   cia: 'https://{s}.tianditu.gov.cn/DataServer?T=cia_w&x={x}&y={y}&l={z}&tk={tk}',
+   ter: 'https://{s}.tianditu.gov.cn/DataServer?T=ter_w&x={x}&y={y}&l={z}&tk={tk}',
+   cta: 'https://{s}.tianditu.gov.cn/DataServer?T=cta_w&x={x}&y={y}&l={z}&tk={tk}'
+   }
 
 # 使用说明
 
@@ -277,16 +276,23 @@ v1.0.0 (2026-01-04)
 # 贡献指南
 
 Fork 本仓库
+
 创建功能分支 (git checkout -b feature/AmazingFeature)
+
 提交更改 (git commit -m 'Add some AmazingFeature')
+
 推送到分支 (git push origin feature/AmazingFeature)
+
 开启 Pull Request
 
 # 支持
 
 如遇问题，请：
+
 查看 常见问题部分
+
 检查浏览器控制台错误
+
 查阅 OpenLayers 官方文档
 
 最后更新: 2026-01-04

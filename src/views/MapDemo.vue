@@ -437,7 +437,7 @@
             };
 
             if (!isLoading.value) {
-                ElMessage.success('地图信息已更新');
+                // ElMessage.success('地图信息已更新');
             }
         }
     };
